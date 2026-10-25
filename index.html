@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="CAELIX — a personal AI assistant for HoloSpace.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>CAELIX — HoloSpace Assistant</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">C</div><div><strong>CAELIX</strong><span>HOLOSPACE ASSISTANT</span></div></div>
+      <button class="new-chat" id="newChat">＋ <span>New conversation</span></button>
+      <div class="side-label">RECENT CONVERSATIONS</div>
+      <div id="historyList" class="history-list"></div>
+      <div class="sidebar-bottom">
+        <div class="status-dot"></div><div><strong id="connectionStatus">Connecting</strong><span>AI service status</span></div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button>
+        <div class="mobile-brand"><span class="mini-mark">C</span> CAELIX</div>
+        <div class="top-status"><span class="pulse"></span><span id="topStatus">INITIALIZING</span></div>
+        <button class="icon-button" id="settingsButton" aria-label="Settings">⚙</button>
+      </header>
+
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="orb-wrap"><div class="orb"><div class="orb-core"></div></div></div>
+          <div class="eyebrow">HOLOSPACE INTELLIGENCE SYSTEM</div>
+          <h1>Good to have you here.</h1>
+          <p>I'm CAELIX. What would you like to work on?</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Help me plan the next stage of HoloSpace."><span>⌁</span><div><strong>Build HoloSpace</strong><small>Plan the next development stage</small></div><b>↗</b></button>
+            <button class="suggestion" data-prompt="Help me organize my projects and priorities."><span>▦</span><div><strong>Organize my work</strong><small>Turn ideas into clear next steps</small></div><b>↗</b></button>
+            <button class="suggestion" data-prompt="Explain a difficult technical concept clearly."><span>⌘</span><div><strong>Explore an idea</strong><small>Understand a technical concept</small></div><b>↗</b></button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <div class="composer-area">
+        <div class="composer" id="composer">
+          <textarea id="messageInput" rows="1" maxlength="8000" placeholder="Message CAELIX…" aria-label="Message CAELIX"></textarea>
+          <div class="composer-actions">
+            <div class="composer-hint">CAELIX AI · Verify important information</div>
+            <div class="action-buttons">
+              <button class="icon-button mic-button" id="micButton" aria-label="Dictate message" title="Dictate message">♩</button>
+              <button class="send-button" id="sendButton" aria-label="Send message" title="Send message">↑</button>
+            </div>
+          </div>
+        </div>
+        <p class="disclaimer">Early access · Conversations are stored in this browser on this device.</p>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="settings-card">
+      <div class="settings-head"><div><span class="eyebrow">PREFERENCES</span><h2>CAELIX settings</h2></div><button class="icon-button" aria-label="Close settings">×</button></div>
+      <label class="setting-row"><span><strong>Speak responses</strong><small>Read replies aloud using your device voice.</small></span><input type="checkbox" id="speakToggle"></label>
+      <label class="setting-row"><span><strong>Voice</strong><small>Choose an available voice on this device.</small></span><select id="voiceSelect"><option value="">System default</option></select></label>
+      <div class="setting-row"><span><strong>Conversation data</strong><small>Chat history is saved locally in this browser.</small></span><button type="button" class="text-button" id="clearHistory">Clear history</button></div>
+      <p class="settings-note">Do not enter passwords, API keys, or other secrets into chat. CAELIX sends your message to its configured AI provider to generate a response.</p>
+      <button class="primary-button" value="close">Done</button>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" class="toast"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
